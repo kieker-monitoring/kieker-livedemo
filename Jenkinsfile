@@ -10,13 +10,11 @@ pipeline {
       steps {
         parallel (
           'Build and Push Nightly Docker Container' : {
-            sh 'cd nightly'
-            sh 'docker build -t kieker/kieker-livedemo:nightly'
+            sh 'docker build -t kieker/kieker-livedemo:nightly nightly/.'
             echo "Push Nightly Docker Container"
           },
           'Build and Push Release Docker Container' : {
-            sh 'cd release'
-            sh 'docker build -t kieker/kieker-livedemo:release'
+            sh 'docker build -t kieker/kieker-livedemo:release release/.'
             echo "Push Release Docker Container" 
           }
         )
