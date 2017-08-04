@@ -5,6 +5,10 @@ pipeline {
     label 'kieker-slave-docker'
   }
 
+  triggers {
+    cron('44 4 * * *')
+  }
+
   environment {
     DOCKERHUB = credentials('kiekerci-dockerhub')
     DOCKER_CONTAINER = 'kieker/livedemo'
@@ -44,6 +48,10 @@ pipeline {
    post {
     always {
       sh "docker logout"
+    }
+
+    success {
+      sh "docker system prune -f"
     }
   }
   
