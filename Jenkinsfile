@@ -8,6 +8,7 @@ pipeline {
   environment {
     DOCKERHUB = credentials('kiekerci-dockerhub')
     DOCKER_CONTAINER = 'kieker/kieker-livedemo'
+    DOCKER_REGISTRY = 'https://registry.hub.docker.com'
   }
  
   stages {
@@ -19,7 +20,7 @@ pipeline {
    
     stage('Login at DockerHub') {
       steps {
-        sh "docker login -u ${DOCKERHUB_USR} -p ${DOCKERHUB_PWD}"
+        sh "docker login -u ${DOCKERHUB_USR} -p ${DOCKERHUB_PWD} ${DOCKER_REGISTRY}"
       }
     }
  
@@ -41,7 +42,7 @@ pipeline {
  
    post {
     always {
-      sh 'docker logout'
+      sh "docker logout ${DOCKER_REGISTRY}"
     }
   }
   
