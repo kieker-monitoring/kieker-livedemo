@@ -6,7 +6,7 @@ pipeline {
   }
 
   environment {
-    //DOCKERHUB = credentials('kiekerci-dockerhub')
+    DOCKERHUB = credentials('kiekerci-dockerhub')
     DOCKER_CONTAINER = 'kieker/kieker-livedemo'
     DOCKER_REGISTRY = 'https://registry.hub.docker.com'
   }
@@ -20,8 +20,8 @@ pipeline {
    
     stage('Login at DockerHub') {
       steps {
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: kiekerci-dockerhub, usernameVariable: 'DOCKER_USR', passwordVariable: 'DOCKER_PWD']]) { 
-          sh "docker login -u ${DOCKER_USR} -p ${DOCKER_PWD} ${DOCKER_REGISTRY}"
+          sh "docker login -u ${DOCKER_USR} -p ${DOCKERHUB_PWD} ${DOCKERHUB_REGISTRY}"
+          echo "Logged in."
         }
       }
     }
