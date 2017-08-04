@@ -20,8 +20,9 @@ pipeline {
    
     stage('Login at DockerHub') {
       steps {
+          echo "Pre-login"
           sh "docker login -u ${DOCKERHUB_USR} -p ${DOCKERHUB_PSW} ${DOCKERHUB_REGISTRY}"
-          echo "Logged in."
+          echo "Post-login"
       }
     }
  
