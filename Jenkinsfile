@@ -6,6 +6,12 @@ pipeline {
   }
 
   stages {
+    stage('Pull Docker Base Image') {
+      steps {
+        sh 'docker pull openjdk:7-jre'
+      }
+    }
+    
     stage('Build and Push Docker Container') {
       steps {
         parallel (
