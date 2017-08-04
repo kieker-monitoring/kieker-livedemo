@@ -14,7 +14,7 @@ pipeline {
             sh 'docker build -t kieker/kieker-livedemo:nightly'
             echo "Push Nightly Docker Container"
           },
-          'Build and Push Release Docker Container') {
+          'Build and Push Release Docker Container' {
             sh 'cd release'
             sh 'docker build -t kieker/kieker-livedemo:release'
             echo "Push Release Docker Container" 
