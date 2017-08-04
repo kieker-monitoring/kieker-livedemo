@@ -22,7 +22,6 @@ pipeline {
       steps {
           sh "docker login -u ${DOCKER_USR} -p ${DOCKERHUB_PWD} ${DOCKERHUB_REGISTRY}"
           echo "Logged in."
-        }
       }
     }
  
