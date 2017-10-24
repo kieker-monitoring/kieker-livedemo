@@ -23,9 +23,7 @@ pipeline {
    
     stage('Login at DockerHub') {
       steps {
-          echo "Pre-login"
-          sh "docker login -u ${DOCKERHUB_USR} -p ${DOCKERHUB_PSW}"
-          echo "Post-login"
+        sh "docker login -u ${DOCKERHUB_USR} -p ${DOCKERHUB_PSW}"
       }
     }
  
@@ -48,6 +46,7 @@ pipeline {
    post {
     always {
       sh "docker logout"
+      deleteDir()
     }
 
     success {
