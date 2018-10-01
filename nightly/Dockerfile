@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM openjdk:7-jre
 
 EXPOSE 8080
 
