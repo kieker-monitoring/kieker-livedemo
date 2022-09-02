@@ -1,10 +1,10 @@
-FROM openjdk:7-jre
+FROM openjdk:8-jre
 
 EXPOSE 8080
 
-ENV VER_NAME "1.14-SNAPSHOT"
+ENV VER_NAME "2.0.0"
 ENV DL_NAME "kieker.tar.gz"
-ENV ARTIFACT_URL "https://build.se.informatik.uni-kiel.de/jenkins/job/kieker-monitoring/job/kieker/job/master/lastSuccessfulBuild/artifact/build/distributions/kieker-${VER_NAME}-binaries.tar.gz"
+ENV ARTIFACT_URL "https://build.se.informatik.uni-kiel.de/job/kieker-dev/job/master/lastSuccessfulBuild/artifact/build/distributions/kieker-${VER_NAME}-binaries.tar.gz"
 
 WORKDIR /opt
 
